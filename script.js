@@ -1,35 +1,62 @@
-const scenes = document.querySelectorAll('.scene');
-const nextButtons = document.querySelectorAll('.nextBtn');
-const startBtn = document.getElementById('startBtn');
-const music = document.getElementById('bgMusic');
+const scenes = document.querySelectorAll(".scene");
+
+const beginBtn = document.getElementById("beginBtn");
+
+const bgMusic = document.getElementById("bgMusic");
+
+const nextButtons = document.querySelectorAll(".nextBtn");
+
+const prevButtons = document.querySelectorAll(".prevBtn");
 
 let currentScene = 0;
 
+/* ------------------------ */
+/* SHOW SCENE */
+/* ------------------------ */
+
 function showScene(index){
 
-    scenes.forEach(scene=>{
-        scene.classList.remove('active');
+    scenes.forEach(scene => {
+
+        scene.classList.remove("active");
+
     });
 
-    scenes[index].classList.add('active');
+    scenes[index].classList.add("active");
 
 }
 
-startBtn.addEventListener('click',()=>{
+/* ------------------------ */
+/* BEGIN STORY */
+/* ------------------------ */
 
-    music.volume = 0.5;
+if(beginBtn){
 
-    music.play().catch(()=>{});
+    beginBtn.addEventListener("click", () => {
 
-    currentScene = 1;
+        bgMusic.volume = 0.55;
 
-    showScene(currentScene);
+        bgMusic.play().catch(err => {
 
-});
+            console.log("Music blocked:", err);
 
-nextButtons.forEach(button=>{
+        });
 
-    button.addEventListener('click',()=>{
+        currentScene = 1;
+
+        showScene(currentScene);
+
+    });
+
+}
+
+/* ------------------------ */
+/* NEXT BUTTONS */
+/* ------------------------ */
+
+nextButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
 
         if(currentScene < scenes.length - 1){
 
@@ -43,9 +70,33 @@ nextButtons.forEach(button=>{
 
 });
 
-document.addEventListener('keydown',(e)=>{
+/* ------------------------ */
+/* PREVIOUS BUTTONS */
+/* ------------------------ */
 
-    if(e.key === "ArrowRight"){
+prevButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        if(currentScene > 0){
+
+            currentScene--;
+
+            showScene(currentScene);
+
+        }
+
+    });
+
+});
+
+/* ------------------------ */
+/* KEYBOARD SUPPORT */
+/* ------------------------ */
+
+document.addEventListener("keydown", (event) => {
+
+    if(event.key === "ArrowRight"){
 
         if(currentScene < scenes.length - 1){
 
@@ -57,7 +108,7 @@ document.addEventListener('keydown',(e)=>{
 
     }
 
-    if(e.key === "ArrowLeft"){
+    if(event.key === "ArrowLeft"){
 
         if(currentScene > 0){
 
@@ -70,3 +121,56 @@ document.addEventListener('keydown',(e)=>{
     }
 
 });
+
+/* ------------------------ */
+/* DOUBLE TAP MOBILE */
+/* ------------------------ */
+
+let lastTap = 0;
+
+document.addEventListener("touchend", function(event){
+
+    let currentTime = new Date().getTime();
+
+    let tapLength = currentTime - lastTap;
+
+    if(tapLength < 300 && tapLength > 0){
+
+        if(currentScene < scenes.length - 1){
+
+            currentScene++;
+
+            showScene(currentScene);
+
+        }
+
+    }
+
+    lastTap = currentTime;
+
+});
+
+/* ------------------------ */
+/* PRELOAD IMAGES */
+/* ------------------------ */
+
+const preloadImages = [
+
+    "assets/first-chat.jpg",
+    "assets/hand.jpg"
+
+];
+
+preloadImages.forEach(src => {
+
+    const img = new Image();
+
+    img.src = src;
+
+});
+
+/* ------------------------ */
+/* INITIAL SCENE */
+/* ------------------------ */
+
+showScene(0);
