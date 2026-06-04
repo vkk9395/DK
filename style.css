@@ -387,5 +387,42 @@ button{
 width:100%;
 
 }
+  .nav-buttons{
+
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:25px;
+
+}
+
+.backBtn{
+
+background:
+rgba(255,255,255,.15);
+
+color:white;
+
+border:
+1px solid rgba(255,255,255,.2);
+
+}
+
+.backBtn:hover{
+
+background:
+rgba(255,255,255,.25);
+
+}
+
+@media(max-width:768px){
+
+.nav-buttons{
+
+flex-direction:column;
+
+}
+
+}
 
 }
