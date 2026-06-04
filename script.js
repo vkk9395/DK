@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
 
 ```
 const scenes =
@@ -9,9 +9,7 @@ let currentScene = 0;
 function showScene(index) {
 
     scenes.forEach(scene => {
-
         scene.classList.remove("active");
-
     });
 
     scenes[index].classList.add("active");
@@ -27,11 +25,11 @@ const beginBtn =
 const bgMusic =
     document.getElementById("bgMusic");
 
-if (beginBtn) {
+if(beginBtn){
 
-    beginBtn.addEventListener("click", function () {
+    beginBtn.addEventListener("click", function() {
 
-        if (bgMusic) {
+        if(bgMusic){
 
             bgMusic.volume = 0.5;
 
@@ -47,18 +45,13 @@ if (beginBtn) {
 
 document
     .querySelectorAll(".nextBtn")
-    .forEach(btn => {
+    .forEach(button => {
 
-        btn.addEventListener("click", () => {
+        button.addEventListener("click", function() {
 
-            if (
-                currentScene <
-                scenes.length - 1
-            ) {
+            if(currentScene < scenes.length - 1){
 
-                showScene(
-                    currentScene + 1
-                );
+                showScene(currentScene + 1);
 
             }
 
@@ -68,15 +61,13 @@ document
 
 document
     .querySelectorAll(".prevBtn")
-    .forEach(btn => {
+    .forEach(button => {
 
-        btn.addEventListener("click", () => {
+        button.addEventListener("click", function() {
 
-            if (currentScene > 0) {
+            if(currentScene > 0){
 
-                showScene(
-                    currentScene - 1
-                );
+                showScene(currentScene - 1);
 
             }
 
