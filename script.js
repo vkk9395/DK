@@ -17,10 +17,10 @@ function showScene(index){
 
     const activeScene = scenes[index];
 
-    activeScene.scrollTo({
-        top:0,
-        behavior:'smooth'
-    });
+   window.scrollTo({
+    top:0,
+    behavior:'instant'
+});
 
     window.scrollTo({
         top:0,
