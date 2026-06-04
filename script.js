@@ -1,5 +1,5 @@
 const scenes = document.querySelectorAll('.scene');
-const backButtons = document.querySelectorAll('.backBtn');
+const nextButtons = document.querySelectorAll('.nextBtn');
 const startBtn = document.getElementById('startBtn');
 const music = document.getElementById('bgMusic');
 
@@ -29,12 +29,7 @@ startBtn.addEventListener('click', () => {
 
     currentScene = 1;
 
-showScene(currentScene);
-
-window.scrollTo({
-top:0,
-behavior:'smooth'
-});
+    showScene(currentScene);
 
 });
 
@@ -50,39 +45,12 @@ nextButtons.forEach(button => {
 
             showScene(currentScene);
 
-window.scrollTo({
-top:0,
-behavior:'smooth'
-});
-
         }
 
     });
 
 });
 
-backButtons.forEach(button => {
-
-    button.addEventListener('click', () => {
-
-        currentScene--;
-
-        if(currentScene < 0){
-
-            currentScene = 0;
-
-        }
-
-       showScene(currentScene);
-
-window.scrollTo({
-top:0,
-behavior:'smooth'
-});
-
-    });
-
-});
 // Optional keyboard support
 
 document.addEventListener('keydown', (e) => {
@@ -109,7 +77,7 @@ document.addEventListener('dblclick', () => {
 
         currentScene++;
 
-       showScene(currentScene);
+        showScene(currentScene);
 
     }
 
