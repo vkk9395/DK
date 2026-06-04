@@ -29,7 +29,12 @@ startBtn.addEventListener('click', () => {
 
     currentScene = 1;
 
-    showScene(currentScene);
+showScene(currentScene);
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
 
 });
 
@@ -44,6 +49,11 @@ nextButtons.forEach(button => {
         if (currentScene < scenes.length) {
 
             showScene(currentScene);
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
 
         }
 
@@ -63,7 +73,12 @@ backButtons.forEach(button => {
 
         }
 
-        showScene(currentScene);
+       showScene(currentScene);
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
 
     });
 
@@ -94,7 +109,12 @@ document.addEventListener('dblclick', () => {
 
         currentScene++;
 
-        showScene(currentScene);
+       showScene(currentScene);
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
 
     }
 
