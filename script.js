@@ -1,5 +1,5 @@
 const scenes = document.querySelectorAll('.scene');
-const nextButtons = document.querySelectorAll('.nextBtn');
+const backButtons = document.querySelectorAll('.backBtn');
 const startBtn = document.getElementById('startBtn');
 const music = document.getElementById('bgMusic');
 
@@ -51,6 +51,23 @@ nextButtons.forEach(button => {
 
 });
 
+backButtons.forEach(button => {
+
+    button.addEventListener('click', () => {
+
+        currentScene--;
+
+        if(currentScene < 0){
+
+            currentScene = 0;
+
+        }
+
+        showScene(currentScene);
+
+    });
+
+});
 // Optional keyboard support
 
 document.addEventListener('keydown', (e) => {
