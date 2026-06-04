@@ -6,10 +6,8 @@ box-sizing:border-box;
 
 html,body{
 width:100%;
-min-height:100%;
-overflow-x:hidden;
-overflow-y:auto;
-}
+height:100%;
+overflow:hidden;
 font-family:'Montserrat',sans-serif;
 background:#020617;
 color:white;
@@ -87,15 +85,11 @@ z-index:-2;
 
 .scene{
 
-display:none;
+position:absolute;
 
 width:100%;
-min-height:100vh;
+height:100vh;
 
-padding:
-40px 20px 80px;
-
-}
 display:flex;
 justify-content:center;
 align-items:center;
@@ -112,9 +106,8 @@ padding:30px;
 
 .scene.active{
 
-display:flex;
-justify-content:center;
-align-items:center;
+opacity:1;
+visibility:visible;
 
 }
 
@@ -260,13 +253,7 @@ scale(1.04);
 .memory-image{
 
 width:100%;
-max-width:450px;
-
-max-height:60vh;
-
-object-fit:contain;
-
-}
+max-width:550px;
 
 border-radius:20px;
 
@@ -398,43 +385,6 @@ line-height:1.7;
 button{
 
 width:100%;
-
-}
-  .nav-buttons{
-
-display:flex;
-justify-content:center;
-gap:15px;
-margin-top:25px;
-
-}
-
-.backBtn{
-
-background:
-rgba(255,255,255,.15);
-
-color:white;
-
-border:
-1px solid rgba(255,255,255,.2);
-
-}
-
-.backBtn:hover{
-
-background:
-rgba(255,255,255,.25);
-
-}
-
-@media(max-width:768px){
-
-.nav-buttons{
-
-flex-direction:column;
-
-}
 
 }
 
