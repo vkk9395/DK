@@ -5,11 +5,9 @@ const music = document.getElementById('bgMusic');
 
 let currentScene = 0;
 
-// Show scene function
+function showScene(index){
 
-function showScene(index) {
-
-    scenes.forEach(scene => {
+    scenes.forEach(scene=>{
         scene.classList.remove('active');
     });
 
@@ -17,15 +15,11 @@ function showScene(index) {
 
 }
 
-// Start story
-
-startBtn.addEventListener('click', () => {
+startBtn.addEventListener('click',()=>{
 
     music.volume = 0.5;
 
-    music.play().catch(() => {
-        console.log("Autoplay blocked until interaction.");
-    });
+    music.play().catch(()=>{});
 
     currentScene = 1;
 
@@ -33,15 +27,13 @@ startBtn.addEventListener('click', () => {
 
 });
 
-// Next buttons
+nextButtons.forEach(button=>{
 
-nextButtons.forEach(button => {
+    button.addEventListener('click',()=>{
 
-    button.addEventListener('click', () => {
+        if(currentScene < scenes.length - 1){
 
-        currentScene++;
-
-        if (currentScene < scenes.length) {
+            currentScene++;
 
             showScene(currentScene);
 
@@ -51,15 +43,13 @@ nextButtons.forEach(button => {
 
 });
 
-// Optional keyboard support
+document.addEventListener('keydown',(e)=>{
 
-document.addEventListener('keydown', (e) => {
+    if(e.key === "ArrowRight"){
 
-    if (e.key === 'ArrowRight') {
+        if(currentScene < scenes.length - 1){
 
-        currentScene++;
-
-        if (currentScene < scenes.length) {
+            currentScene++;
 
             showScene(currentScene);
 
@@ -67,17 +57,15 @@ document.addEventListener('keydown', (e) => {
 
     }
 
-});
+    if(e.key === "ArrowLeft"){
 
-// Mobile tap anywhere support
+        if(currentScene > 0){
 
-document.addEventListener('dblclick', () => {
+            currentScene--;
 
-    if (currentScene < scenes.length - 1) {
+            showScene(currentScene);
 
-        currentScene++;
-
-        showScene(currentScene);
+        }
 
     }
 
