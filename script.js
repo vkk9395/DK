@@ -111,11 +111,6 @@ document.addEventListener('dblclick', () => {
 
        showScene(currentScene);
 
-window.scrollTo({
-top:0,
-behavior:'smooth'
-});
-
     }
 
 });
